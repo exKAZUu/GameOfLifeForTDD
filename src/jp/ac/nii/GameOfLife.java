@@ -40,11 +40,11 @@ public class GameOfLife {
   }
 
   public void live(int x, int y) {
-    if (count == 2 || count == 3) {
-      _map.setLiving(x, y, true);
-      return true;
-    }
-    return false;
+//    if (count == 2 || count == 3) {
+//      _map.setLiving(x, y, true);
+//      return true;
+//    }
+//    return false;
   }
 
   public void depopulate(int x, int y) {
