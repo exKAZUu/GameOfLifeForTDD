@@ -7,7 +7,7 @@ public class Field {
   private final int height;
   private boolean[][] table;
   private boolean[][] nextTable;
-
+  
   public Field(int width, int height) {
     this.width = width;
     this.height = height;
@@ -40,7 +40,7 @@ public class Field {
   }
 
   public void update() {
-    boolean[][] temp = table;
+    boolean[][] temp = table;    
     table = nextTable;
     nextTable = temp;
   }
