@@ -53,4 +53,9 @@ public class GameOfLifeTest {
 		assertThat(_gol.getField().isLiving(1, 0), is(false));
 		assertThat(_gol.getField().isLiving(2, 2), is(false));
 	}
+	
+	@Test
+	public void testBirth() {
+		assertThat(_gol.getField().isLiving(1, 2), is(true));
+	}
 }
