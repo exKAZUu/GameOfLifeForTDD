@@ -8,12 +8,12 @@ import org.junit.Test;
 public class GameOfLifeTest {
 
 	private GameOfLife _gol;
-	private Map _map;
+	private Field _map;
 
 	@Before
 	public void before() {
 		_gol = new GameOfLife(10, 10);
-		_map = _gol.getMap();
+		_map = _gol.getField();
 	}
 
 	@Test
@@ -24,9 +24,9 @@ public class GameOfLifeTest {
 
 	@Test
 	public void succeedToBirth() {
-		_map.setLiving(1, 1, true);
-		_map.setLiving(0, 1, true);
-		_map.setLiving(1, 0, true);
+		_map.setNextCell(1, 1, true);
+		_map.setNextCell(0, 1, true);
+		_map.setNextCell(1, 0, true);
 		_gol.advance();
 		assertEquals(_map.isLiving(0, 0), true);
 	}

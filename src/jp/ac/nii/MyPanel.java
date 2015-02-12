@@ -11,13 +11,12 @@ public class MyPanel extends JPanel {
   private static final long serialVersionUID = 8111796824930071853L;
   private final int tileWidth;
   private final int tileHeight;
-  private Map map;
+  private final GameOfLife gameOfLife;
 
   public MyPanel(GameOfLife gameOfLife, int tileWidth, int tileHeight) {
-    this.map = gameOfLife.getMap();
+    this.gameOfLife = gameOfLife;
     this.tileWidth = tileWidth;
     this.tileHeight = tileHeight;
-    final MyPanel self = this;
     this.addMouseListener(new MouseListener() {
       public void mouseReleased(MouseEvent arg0) {}
 
@@ -28,16 +27,18 @@ public class MyPanel extends JPanel {
       public void mouseEntered(MouseEvent arg0) {}
 
       public void mouseClicked(MouseEvent e) {
-        int x = e.getX() / self.tileWidth;
-        int y = e.getY() / self.tileHeight;
-        if (!(0 <= x && x < self.map.getWidth() && 0 <= y && y < self.map.getHeight())) {
+        int x = e.getX() / tileWidth;
+        int y = e.getY() / tileHeight;
+        Field field = gameOfLife.getField();
+        if (!(0 <= x && x < field.getWidth() && 0 <= y && y < field.getHeight())) {
           return;
         }
         if (e.getButton() == MouseEvent.BUTTON1) {
-          map.setLiving(x, y, !map.isLiving(x, y));
+          field.initializeCell(x, y, !field.isLiving(x, y));
         } else {
           System.out.println("START");
-          self.removeMouseListener(this);
+          gameOfLife.start();
+          removeMouseListener(this);
         }
       }
     });
@@ -50,13 +51,14 @@ public class MyPanel extends JPanel {
 
   @Override
   public void paint(Graphics g) {
+    Field field = gameOfLife.getField();
     g.setColor(Color.WHITE);
     g.fillRect(0, 0, 500, 500);
 
     g.setColor(Color.BLACK);
-    for (int x = 0; x < map.getWidth(); x++) {
-      for (int y = 0; y < map.getHeight(); y++) {
-        boolean value = map.isLiving(x, y);
+    for (int x = 0; x < field.getWidth(); x++) {
+      for (int y = 0; y < field.getHeight(); y++) {
+        boolean value = field.isLiving(x, y);
         if (value) {
           g.fillRect(tileWidth * x, tileHeight * y, tileWidth, tileHeight);
         }

@@ -19,6 +19,8 @@ public class Main {
     frame.setLocationRelativeTo(null);
     frame.setVisible(true);
 
+    gameOfLife.getField().initializeRandomly();
+
     System.out.println("INITIALIZE");
     while (frame.isVisible()) {
       try {
