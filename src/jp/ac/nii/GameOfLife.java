@@ -48,6 +48,8 @@ public class GameOfLife {
 					_field.setNextCell(x, y, false);
 				} else if(cellCount == 3 && !_field.isLiving(x, y)) {
 					_field.setNextCell(x, y, true);
+				} else {
+					_field.setNextCell(x, y, _field.isLiving(x, y));
 				}
 			}
 		}
