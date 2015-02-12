@@ -1,6 +1,10 @@
 package jp.ac.nii;
 
-
+/**
+ * ライフゲームのルールを表現するクラスです。 advanceメソッドのみ変更して下さい。 ただし、新たにメソッドを追加しても構いません。
+ * 
+ * @author exKAZUu
+ */
 public class GameOfLife {
   private Field _field;
   private boolean _active;
@@ -31,5 +35,8 @@ public class GameOfLife {
     _field.clear();
   }
 
-  public void advance() {}
+  public void advance() {
+    // ここに処理を追記して完成させよう
+  }
+  // メソッドを適宜追加しよう
 }
