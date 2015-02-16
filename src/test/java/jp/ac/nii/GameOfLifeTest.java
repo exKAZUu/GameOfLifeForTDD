@@ -39,6 +39,32 @@ public class GameOfLifeTest {
       res[i] = f.isLiving(i/3, i%3);
     }
     assertArrayEquals(res,
-                      new boolean[]{true, true, false, true, true, false, false, false, false});
+                      new boolean[]{true, true, false,
+                                    true, true, false,
+                                    false, false, false});
+  }
+
+  @Test
+  public void testLiving() {
+    GameOfLife game = new GameOfLife(4, 4);
+    Field f = game.getField();
+    f.clear();
+    f.initializeCell(1, 1, true);
+    f.initializeCell(2, 1, true);
+    f.initializeCell(1, 2, true);
+    f.initializeCell(2, 2, true);
+
+    startGame(game);
+
+    boolean[] res = new boolean[16];
+    for (int i = 0; i < 16; i++) {
+      res[i] = f.isLiving(i/4, i%4);
+    }
+    assertArrayEquals(res,
+                      new boolean[]{false, false, false, false,
+                                    false, true, true, false,
+                                    false, true, true, false,
+                                    false, false, false, false});
+
   }
 }
