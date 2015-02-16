@@ -53,12 +53,15 @@ public class GameOfLife {
       for (int x = 0; x < w; x++) {
         boolean isLiving = _field.isLiving(x, y);
         int c = countLivingNeighborCells(x, y);
-        if (!isLiving && c == 3)
-          birth(x, y);
-        if (isLiving && c >= 2 && c <= 3)
-          living(x, y);
-        if (isLiving && c <= 1)
-          depopulate(x, y);
+        if (isLiving) {
+          if (c <= 1)
+            depopulate(x, y);
+          if (c >= 2 && c <= 3)
+            living(x, y);
+        } else {
+          if (c == 3)
+            birth(x, y);
+        }
       }
     }
 

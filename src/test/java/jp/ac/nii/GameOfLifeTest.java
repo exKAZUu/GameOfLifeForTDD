@@ -38,10 +38,10 @@ public class GameOfLifeTest {
     for (int i = 0; i < 9; i++) {
       res[i] = f.isLiving(i/3, i%3);
     }
-    assertArrayEquals(res,
-                      new boolean[]{true, true, false,
+    assertArrayEquals(new boolean[]{true, true, false,
                                     true, true, false,
-                                    false, false, false});
+                                    false, false, false},
+                      res);
   }
 
   @Test
@@ -60,11 +60,11 @@ public class GameOfLifeTest {
     for (int i = 0; i < 16; i++) {
       res[i] = f.isLiving(i/4, i%4);
     }
-    assertArrayEquals(res,
-                      new boolean[]{false, false, false, false,
+    assertArrayEquals(new boolean[]{false, false, false, false,
                                     false, true, true, false,
                                     false, true, true, false,
-                                    false, false, false, false});
+                                    false, false, false, false},
+                      res);
 
   }
 
