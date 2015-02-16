@@ -67,4 +67,21 @@ public class GameOfLifeTest {
                                     false, false, false, false});
 
   }
+
+  @Test
+  public void testDepopulation() {
+    GameOfLife game = new GameOfLife(3, 3);
+    Field f = game.getField();
+    f.clear();
+    f.initializeCell(1, 1, true);
+    f.initializeCell(2, 1, true);
+
+    startGame(game);
+
+    boolean[] res = new boolean[9];
+    for (int i = 0; i < 9; i++) {
+      res[i] = f.isLiving(i/3, i%3);
+    }
+    assertArrayEquals(res, new boolean[9]);
+  }
 }
