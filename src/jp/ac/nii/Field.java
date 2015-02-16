@@ -43,7 +43,7 @@ public class Field {
     Random random = new Random();
     for (int y = 0; y < height; y++) {
       for (int x = 0; x < width; x++) {
-        table[y][x] = random.nextBoolean();
+        table[y][x] = nextTable[y][x] = random.nextBoolean();
       }
     }
   }
@@ -56,7 +56,7 @@ public class Field {
    * @param living 指定したセルが生きているかどうかを表すブール値
    */
   public void initializeCell(int x, int y, boolean living) {
-    table[y][x] = living;
+    table[y][x] = nextTable[y][x] = living;
   }
 
   /**
@@ -71,22 +71,24 @@ public class Field {
   }
 
   /**
-   * setNextCellメソッドによる設定結果をフィールドに反映します。 全てのセルに対してsetNextCellメソッドを実行してから呼び出して下さい。
+   * setNextCellメソッドによる設定結果をフィールドに反映します。 
    */
   public void update() {
-    boolean[][] temp = table;
-    table = nextTable;
-    nextTable = temp;
+    // 念の為に新しいテーブルの値を完全にコピーする。
+    for (int y = 0; y < height; y++) {
+      for (int x = 0; x < width; x++) {
+        table[y][x] = nextTable[y][x];
+      }
+    }
   }
 
   /**
-   * フィールドを死んでいるセルで初期化します。
+   * 死んでいるセルでフィールドを初期化します。
    */
   public void clear() {
     for (int y = 0; y < height; y++) {
       for (int x = 0; x < width; x++) {
-        table[y][x] = false;
-        nextTable[y][x] = false;
+        table[y][x] = nextTable[y][x] = false;
       }
     }
   }

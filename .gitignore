@@ -1,2 +1,10 @@
 target/
 bin/
+
+# Eclipse
+.settings
+.classpath
+.project
+
+# IntelliJ IDEA
+.idea
