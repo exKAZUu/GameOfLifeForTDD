@@ -82,6 +82,6 @@ public class GameOfLifeTest {
     for (int i = 0; i < 9; i++) {
       res[i] = f.isLiving(i/3, i%3);
     }
-    assertArrayEquals(res, new boolean[9]);
+    assertArrayEquals(new boolean[9], res);
   }
 }

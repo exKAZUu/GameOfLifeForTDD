@@ -57,6 +57,8 @@ public class GameOfLife {
           birth(x, y);
         if (isLiving && c >= 2 && c <= 3)
           living(x, y);
+        if (isLiving && c <= 1)
+          depopulate(x, y);
       }
     }
 
@@ -72,6 +74,10 @@ public class GameOfLife {
     _field.setNextCell(x, y, true);
   }
 
+  public void depopulate(int x, int y) {
+    _field.setNextCell(x, y, false);
+  }
+
   public int countLivingNeighborCells(int x, int y) {
     int c = 0;
     for (int _y = y - 1; _y <= y + 1; _y++) {
@@ -79,6 +85,8 @@ public class GameOfLife {
         continue;
       for (int _x = x - 1; _x <= x + 1; _x++) {
         if (_x < 0 || _x >= _field.getWidth())
+          continue;
+        if (_x == x && _y == y)
           continue;
 
         if (_field.isLiving(_x, _y))
