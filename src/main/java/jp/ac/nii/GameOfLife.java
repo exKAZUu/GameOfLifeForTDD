@@ -55,6 +55,8 @@ public class GameOfLife {
         int c = countLivingNeighborCells(x, y);
         if (!isLiving && c == 3)
           birth(x, y);
+        if (isLiving && c >= 2 && c <= 3)
+          living(x, y);
       }
     }
 
@@ -63,6 +65,10 @@ public class GameOfLife {
   
   // メソッドを適宜追加しよう
   public void birth(int x, int y) {
+    _field.setNextCell(x, y, true);
+  }
+
+  public void living(int x, int y) {
     _field.setNextCell(x, y, true);
   }
 
