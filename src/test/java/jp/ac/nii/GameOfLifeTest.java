@@ -16,16 +16,20 @@ public class GameOfLifeTest {
 
   @Test
   public void testDeadToAlive() {
-    Field field = new Field(2, 2);
-    field.clear();
-    field.setNextCell(0, 1, true);
-    field.setNextCell(1, 1, true);
-    field.setNextCell(1, 0, true);
-    field.update();
+    Field field = createField2x2(false, true, true, true);
     GameOfLife game = new GameOfLife(field);
     game.start();
     game.advance();
     assertTrue(field.isLiving(0, 0));
   }
   
+  private Field createField2x2(boolean b00, boolean b01, boolean b10, boolean b11) {
+    Field field = new Field(2, 2);
+    field.setNextCell(0, 0, b00);
+    field.setNextCell(0, 1, b01);
+    field.setNextCell(1, 0, b10);
+    field.setNextCell(1, 1, b11);
+    field.update();
+    return field;
+  }
 }

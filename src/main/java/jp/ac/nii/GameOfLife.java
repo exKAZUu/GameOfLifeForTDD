@@ -47,10 +47,29 @@ public class GameOfLife {
     }
     
     // ここに処理を追記して完成させよう
-    _field.setNextCell(0, 0, true);
+    int width = _field.getWidth();
+    int height = _field.getHeight();
+    for (int x = 0; x < width; x++) {
+      for (int y = 0; y < height; y++) {
+        int c = countLivingNeighbours(x, y);
+        if (c == 3) {
+          _field.setNextCell(x, y, true);
+        }
+      }
+    }
     
     _field.update();
   }
   
   // メソッドを適宜追加しよう
+  private int countLivingNeighbours(int x, int y) {
+    int c = 0;
+    for (int dx = -1; dx <= 1; dx++) {
+      for (int dy = -1; dy <= 1; dy++) {
+        if (dx == 0 && dy == 0) continue;
+        if (_field.isLiving(x + dx, y + dy)) c++;
+      }
+    }
+    return c;
+  }
 }
