@@ -24,8 +24,17 @@ public class GameOfLifeTest {
   }
   
   @Test
-  public void testAliveToDead1() {
+  public void testAliveToDead0() {
     Field field = createField2x2(false, false, false, true);
+    GameOfLife game = new GameOfLife(field);
+    game.start();
+    game.advance();
+    assertFalse(field.isLiving(1, 1));
+  }
+  
+  @Test
+  public void testAliveToDead1() {
+    Field field = createField2x2(false, false, true, true);
     GameOfLife game = new GameOfLife(field);
     game.start();
     game.advance();
