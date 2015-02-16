@@ -21,7 +21,7 @@ public class GameOfLifeTest {
       for(int j = 0; j < 3; j++)
         field.initializeCell(i, j, (i + j) % 2 == 0);
     GameOfLife gameOfLife = new GameOfLife(field);
-    gameOfLife.advance();
+    gameOfLife.start();
     field = gameOfLife.getField();
     assertTrue(field.isLiving(1, 0));
     assertTrue(field.isLiving(0, 1));
