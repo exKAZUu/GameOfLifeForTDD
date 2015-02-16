@@ -46,7 +46,9 @@ public class GameOfLife {
       return;
     }
     
-    // ここに処理を追記して完成させよう
+    for(int i=0;i<3;i++)
+      for(int j=0;j<3;j++)
+        _field.setNextCell(j, i, (j + i) % 2 == 1);
     
     _field.update();
   }
