@@ -47,6 +47,7 @@ public class GameOfLife {
     }
     
     // ここに処理を追記して完成させよう
+    _field.setNextCell(0, 0, true);
     
     _field.update();
   }
