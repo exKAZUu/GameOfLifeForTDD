@@ -84,4 +84,27 @@ public class GameOfLifeTest {
     }
     assertArrayEquals(new boolean[9], res);
   }
+
+  @Test
+  public void testOverpopulation() {
+    GameOfLife game = new GameOfLife(3, 3);
+    Field f = game.getField();
+    f.clear();
+    f.initializeCell(0, 0, true);
+    f.initializeCell(1, 0, true);
+    f.initializeCell(2, 0, true);
+    f.initializeCell(0, 1, true);
+    f.initializeCell(1, 1, true);
+
+    startGame(game);
+
+    boolean[] res = new boolean[9];
+    for (int i = 0; i < 9; i++) {
+      res[i] = f.isLiving(i/3, i%3);
+    }
+    assertArrayEquals(new boolean[]{true, false, true,
+                                    true, false, true,
+                                    false, false, false},
+                      res);
+  }
 }
