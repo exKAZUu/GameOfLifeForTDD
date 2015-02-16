@@ -5,6 +5,15 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+/**
+ * GUIのビューアとともにライフゲームをスタートするmainメソッドを提供するクラスです。
+ * 起動するとマップが初期化され、左クリックで生存（黒）／死亡（白）の初期値を変更できます。
+ * 右クリックを押すとライフゲームがスタートします。ストップはできません。
+ *
+ * このファイルは書き換えないで下さい。
+ *
+ * @author exKAZUu
+ */
 public class Main {
 
   public static void main(String[] args) {

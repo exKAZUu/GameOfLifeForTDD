@@ -7,6 +7,12 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JPanel;
 
+/**
+ * ライフゲームのGUIビューアを実装するクラスです。
+ * このファイルは書き換えないで下さい。
+ *
+ * @author exKAZUu
+ */
 public class MyPanel extends JPanel {
   private static final long serialVersionUID = 8111796824930071853L;
   private final int tileWidth;

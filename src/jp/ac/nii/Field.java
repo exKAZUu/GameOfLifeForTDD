@@ -3,8 +3,9 @@ package jp.ac.nii;
 import java.util.Random;
 
 /**
- * ライフゲームのフィールドを表現するクラスです。 このファイルの中身は書き換えないで下さい。
- * 
+ * ライフゲームのフィールドを表現するクラスです。
+ * このファイルは書き換えないで下さい。
+ *
  * @author exKAZUu
  */
 public class Field {
