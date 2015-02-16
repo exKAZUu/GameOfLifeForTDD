@@ -17,6 +17,12 @@ public class GameOfLifeTest {
     assertNotNull(new GameOfLife(10, 10));
   }
 
+  private void startGame(GameOfLife game) {
+    game.start();
+    game.advance();
+    game.stop();
+  }
+
   @Test
   public void testBirth() {
     GameOfLife game = new GameOfLife(3, 3);
@@ -25,7 +31,8 @@ public class GameOfLifeTest {
     f.initializeCell(0, 0, true);
     f.initializeCell(1, 0, true);
     f.initializeCell(0, 1, true);
-    f.update();
+
+    startGame(game);
 
     boolean[] res = new boolean[9];
     for (int i = 0; i < 9; i++) {
