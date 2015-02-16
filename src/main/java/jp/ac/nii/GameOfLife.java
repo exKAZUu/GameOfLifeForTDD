@@ -58,6 +58,8 @@ public class GameOfLife {
             depopulate(x, y);
           if (c >= 2 && c <= 3)
             living(x, y);
+          if (c >= 4)
+            overpopulate(x, y);
         } else {
           if (c == 3)
             birth(x, y);
@@ -78,6 +80,10 @@ public class GameOfLife {
   }
 
   public void depopulate(int x, int y) {
+    _field.setNextCell(x, y, false);
+  }
+
+  public void overpopulate(int x, int y) {
     _field.setNextCell(x, y, false);
   }
 

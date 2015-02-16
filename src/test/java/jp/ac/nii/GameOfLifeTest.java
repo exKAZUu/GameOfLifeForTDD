@@ -36,7 +36,7 @@ public class GameOfLifeTest {
 
     boolean[] res = new boolean[9];
     for (int i = 0; i < 9; i++) {
-      res[i] = f.isLiving(i/3, i%3);
+      res[i] = f.isLiving(i%3, i/3);
     }
     assertArrayEquals(new boolean[]{true, true, false,
                                     true, true, false,
@@ -58,7 +58,7 @@ public class GameOfLifeTest {
 
     boolean[] res = new boolean[16];
     for (int i = 0; i < 16; i++) {
-      res[i] = f.isLiving(i/4, i%4);
+      res[i] = f.isLiving(i%4, i/4);
     }
     assertArrayEquals(new boolean[]{false, false, false, false,
                                     false, true, true, false,
@@ -80,7 +80,7 @@ public class GameOfLifeTest {
 
     boolean[] res = new boolean[9];
     for (int i = 0; i < 9; i++) {
-      res[i] = f.isLiving(i/3, i%3);
+      res[i] = f.isLiving(i%3, i/3);
     }
     assertArrayEquals(new boolean[9], res);
   }
@@ -100,7 +100,7 @@ public class GameOfLifeTest {
 
     boolean[] res = new boolean[9];
     for (int i = 0; i < 9; i++) {
-      res[i] = f.isLiving(i/3, i%3);
+      res[i] = f.isLiving(i%3, i/3);
     }
     assertArrayEquals(new boolean[]{true, false, true,
                                     true, false, true,
