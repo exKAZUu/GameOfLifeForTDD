@@ -47,16 +47,16 @@ public class GameOfLife {
     // ここに処理を追記して完成させよう
     for (int y = 0; y < _field.getHeight(); y++) {
       for (int x = 0; x < _field.getWidth(); x++) {
-        if (_field.isLiving(x, y)) {
-          int cnt = 0;
-          for (int yy = -1; yy <= +1; yy++) {
-            for (int xx = -1; xx <= +1; xx++) {
-              if (xx == 0 && yy == 0)
-                continue;
-              if (_field.isLiving(x + xx, y + yy))
-                cnt++;
-            }
+        int cnt = 0;
+        for (int yy = -1; yy <= +1; yy++) {
+          for (int xx = -1; xx <= +1; xx++) {
+            if (xx == 0 && yy == 0)
+              continue;
+            if (_field.isLiving(x + xx, y + yy))
+              cnt++;
           }
+        }
+        if (_field.isLiving(x, y)) {
           switch (cnt) {
           case 0:
           case 1:
@@ -68,6 +68,12 @@ public class GameOfLife {
             break;
           default:
             _field.setNextCell(x, y, false);
+            break;
+          }
+        } else {
+          switch (cnt) {
+          case 3:
+            _field.setNextCell(x, y, true);
             break;
           }
         }

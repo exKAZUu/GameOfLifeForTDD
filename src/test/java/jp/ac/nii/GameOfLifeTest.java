@@ -81,7 +81,6 @@ public class GameOfLifeTest {
     for (int i = 0; i < Point.order.length; i++) {
       Field f = new Field(3, 3);
       GameOfLife g = new GameOfLife(f);
-      f.setNextCell(1, 1, true); // living!
       for (int j = 0; j < i; j++) {
         Point p = Point.order[j];
         f.setNextCell(p.x, p.y, true);
