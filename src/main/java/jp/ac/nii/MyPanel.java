@@ -19,7 +19,7 @@ public class MyPanel extends JPanel {
   private final int tileHeight;
   private final GameOfLife gameOfLife;
 
-  public MyPanel(GameOfLife gameOfLife, int tileWidth, int tileHeight) {
+  public MyPanel(final GameOfLife gameOfLife, final int tileWidth, final int tileHeight) {
     this.gameOfLife = gameOfLife;
     this.tileWidth = tileWidth;
     this.tileHeight = tileHeight;
