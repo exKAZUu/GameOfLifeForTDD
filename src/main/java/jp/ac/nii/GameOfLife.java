@@ -58,6 +58,9 @@ public class GameOfLife {
         if (c == 3) {
           _field.setNextCell(x, y, true);
         }
+        if (c >= 4) {
+          _field.setNextCell(x, y, false);
+        }
       }
     }
     
