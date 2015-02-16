@@ -52,6 +52,9 @@ public class GameOfLife {
     for (int x = 0; x < width; x++) {
       for (int y = 0; y < height; y++) {
         int c = countLivingNeighbours(x, y);
+        if (c == 0) {
+          _field.setNextCell(x, y, false);
+        }
         if (c == 3) {
           _field.setNextCell(x, y, true);
         }
