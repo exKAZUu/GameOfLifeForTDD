@@ -56,6 +56,15 @@ public class GameOfLifeTest {
     assertFalse(field.isLiving(1, 1));
   }
 
+  @Test
+  public void testDeadToDead() {
+    Field field = createField2x2(false, true, false, true);
+    GameOfLife game = new GameOfLife(field);
+    game.start();
+    game.advance();
+    assertFalse(field.isLiving(0, 0));
+  }
+
   private Field createField2x2(boolean b00, boolean b01, boolean b10, boolean b11) {
     Field field = new Field(2, 2);
     field.setNextCell(0, 0, b00);
