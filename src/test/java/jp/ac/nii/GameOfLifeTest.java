@@ -49,10 +49,14 @@ public class GameOfLifeTest {
         field.setNextCell(i, j, true);
       }
     }
+    field.setNextCell(0, 0, false);
     field.update();
     GameOfLife game = new GameOfLife(field);
     game.start();
     game.advance();
+    assertTrue(field.isLiving(0, 0));
+    assertFalse(field.isLiving(0, 1));
+    assertTrue(field.isLiving(0, 2));
     assertFalse(field.isLiving(1, 1));
   }
 
