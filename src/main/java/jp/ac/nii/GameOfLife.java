@@ -54,12 +54,10 @@ public class GameOfLife {
         boolean isLiving = _field.isLiving(x, y);
         int c = countLivingNeighborCells(x, y);
         if (isLiving) {
-          if (c <= 1)
-            depopulate(x, y);
+          if (c <= 1 || c >= 4)
+            death(x, y);
           if (c >= 2 && c <= 3)
-            living(x, y);
-          if (c >= 4)
-            overpopulate(x, y);
+            birth(x, y);
         } else {
           if (c == 3)
             birth(x, y);
@@ -75,15 +73,7 @@ public class GameOfLife {
     _field.setNextCell(x, y, true);
   }
 
-  public void living(int x, int y) {
-    _field.setNextCell(x, y, true);
-  }
-
-  public void depopulate(int x, int y) {
-    _field.setNextCell(x, y, false);
-  }
-
-  public void overpopulate(int x, int y) {
+  public void death(int x, int y) {
     _field.setNextCell(x, y, false);
   }
 

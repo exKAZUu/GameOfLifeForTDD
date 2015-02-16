@@ -23,6 +23,15 @@ public class GameOfLifeTest {
     game.stop();
   }
 
+  private boolean[] checkLiving(Field f, int n) {
+    boolean[] b = new boolean[n];
+    int sqrtN = (int)Math.sqrt(n);
+    for (int i = 0; i < n; i++) {
+      b[i] = f.isLiving(i % sqrtN, i / sqrtN);
+    }
+    return b;
+  }
+
   @Test
   public void testBirth() {
     GameOfLife game = new GameOfLife(3, 3);
@@ -34,14 +43,10 @@ public class GameOfLifeTest {
 
     startGame(game);
 
-    boolean[] res = new boolean[9];
-    for (int i = 0; i < 9; i++) {
-      res[i] = f.isLiving(i%3, i/3);
-    }
     assertArrayEquals(new boolean[]{true, true, false,
                                     true, true, false,
                                     false, false, false},
-                      res);
+                      checkLiving(f, 9));
   }
 
   @Test
@@ -56,15 +61,11 @@ public class GameOfLifeTest {
 
     startGame(game);
 
-    boolean[] res = new boolean[16];
-    for (int i = 0; i < 16; i++) {
-      res[i] = f.isLiving(i%4, i/4);
-    }
     assertArrayEquals(new boolean[]{false, false, false, false,
                                     false, true, true, false,
                                     false, true, true, false,
                                     false, false, false, false},
-                      res);
+                      checkLiving(f, 16));
 
   }
 
@@ -78,11 +79,7 @@ public class GameOfLifeTest {
 
     startGame(game);
 
-    boolean[] res = new boolean[9];
-    for (int i = 0; i < 9; i++) {
-      res[i] = f.isLiving(i%3, i/3);
-    }
-    assertArrayEquals(new boolean[9], res);
+    assertArrayEquals(new boolean[9], checkLiving(f, 9));
   }
 
   @Test
@@ -98,13 +95,9 @@ public class GameOfLifeTest {
 
     startGame(game);
 
-    boolean[] res = new boolean[9];
-    for (int i = 0; i < 9; i++) {
-      res[i] = f.isLiving(i%3, i/3);
-    }
     assertArrayEquals(new boolean[]{true, false, true,
                                     true, false, true,
                                     false, false, false},
-                      res);
+                      checkLiving(f, 9));
   }
 }
