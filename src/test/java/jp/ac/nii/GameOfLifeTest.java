@@ -52,11 +52,12 @@ public class GameOfLifeTest {
       Field f = new Field(3, 3);
       GameOfLife g = new GameOfLife(f);
       f.setNextCell(1, 1, true); // living!
-      for (int j = 0; j <= i; j++) {
+      for (int j = 0; j < i; j++) {
         Point p = Point.order[j];
         f.setNextCell(p.x, p.y, true);
       }
-      g.advance();
+      f.update();
+      g.start();
       g.advance();
 
       switch (i) {
