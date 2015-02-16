@@ -22,6 +22,7 @@ public class GameOfLifeTest {
         field.initializeCell(i, j, (i + j) % 2 == 0);
     GameOfLife gameOfLife = new GameOfLife(field);
     gameOfLife.start();
+    gameOfLife.advance();
     field = gameOfLife.getField();
     assertTrue(field.isLiving(1, 0));
     assertTrue(field.isLiving(0, 1));
